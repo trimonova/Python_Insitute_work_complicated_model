@@ -9,6 +9,7 @@ import matplotlib.lines as mlines
 from matplotlib.collections import PatchCollection
 from scipy.sparse import coo_matrix, linalg, hstack, vstack, csr_matrix
 from scipy.sparse.linalg import spsolve
+from start_to_do_replacement import replace_boundary
 
 
 perm = 2 * 10 ** (-15)  # м2 проницаемость
@@ -19,7 +20,7 @@ Cf = 10 ** (-9)  # сжимаемость флюида
 Cr = 5 * 10 ** (-10)  # сжимаемость скелета
 k_water = mu_water*fi*(Cf+Cr)/perm
 k_oil = mu_oil*fi*(Cf+Cr)/perm
-frac_angle = np.pi/4
+frac_angle = np.pi/6
 frac_angle_2 = np.pi/4*5
 delta_r = 0.005
 delta_r_fine = 0.001
@@ -73,7 +74,7 @@ for well_coord in wells_coord_real:
 wells_coord = list(zip( wells_dists, wells_angles))
 
 print(wells_coord)
-P_well = [500000, 500000, 500000]
+P_well = [500000, 500000, 200000]
 
 CP_dict = {}  # словарь, в котором ключами являются координаты точек с давлениями, а значения - значения этих давлений
 
@@ -86,8 +87,8 @@ frac_angle_2_cell = frac_angle_cell + round((frac_angle_2 - frac_angle - 2 * fi_
 
 frac_coord_1 = [i for i in range(16)]
 frac_coord_2 = [i for i in range(16)]
-frac_pressure_1 = [500000]*16
-frac_pressure_2 = [500000]*16
+frac_pressure_1 = [1500000]*16
+frac_pressure_2 = [1500000]*16
 frac_pressure = frac_pressure_1 + frac_pressure_2
 frac_coords = [(i, frac_angle_cell) for i in frac_coord_1] + [(j, frac_angle_2_cell) for j in frac_coord_2]
 
@@ -102,6 +103,8 @@ def sortByRad(inputSet):
 def sortByAngle(inputSet):
     return inputSet[1]
 
+bound_coord, Func_matrix, bound_coord_cell = replace_boundary(frac_angle, frac_angle_2, r_well, delta_fi_list, delta_r_list)
+
 def PorePressure_in_Time(N_r_full, M_fi_full, Pres_distrib, c3_oil, c3_water, CP_dict, P_center, wells_frac_coords):
 
     # пластовое давление во всей области на нулевом временном шаге
@@ -115,15 +118,25 @@ def PorePressure_in_Time(N_r_full, M_fi_full, Pres_distrib, c3_oil, c3_water, CP
             c1 = 1 / delta_r_list[n] ** 2
             c2 = 1 / 2 / delta_r_list[n]
             A[n][n - 1] = c1 - c2 / (sum(delta_r_list[0:n + 1]))
-            A[n][n] = -2 * c1 - c3_water - 2 / (sum(delta_r_list[0:n + 1])) ** 2 / delta_fi_list[m] ** 2
+            if Func_matrix[n][m] > 0:
+                A[n][n] = -2 * c1 - c3_oil - 2 / (sum(delta_r_list[0:n + 1])) ** 2 / delta_fi_list[m] ** 2
+            else:
+                A[n][n] = -2 * c1 - c3_water - 2 / (sum(delta_r_list[0:n + 1])) ** 2 / delta_fi_list[m] ** 2
             A[n][n + 1] = c1 + c2 / (sum(delta_r_list[0:n + 1]))
+
 
         c1 = 1 / delta_r_list[0] ** 2
         c2 = 1 / 2 / delta_r_list[0]
         if m == frac_angle_cell or m == frac_angle_2_cell:
-            A[0][0] = -2 * c1 - c3_oil - 2 / (delta_r_list[0]) ** 2 / delta_fi_list[m] ** 2
+            if Func_matrix[n][m] > 0:
+                A[0][0] = -2 * c1 - c3_oil - 2 / (delta_r_list[0]) ** 2 / delta_fi_list[m] ** 2
+            else:
+                A[0][0] = -2 * c1 - c3_water - 2 / (delta_r_list[0]) ** 2 / delta_fi_list[m] ** 2
         else:
-            A[0][0] = -2 * c1 - c3_oil - 2/(delta_r_list[0])**2/delta_fi_list[m]**2 + c1 - c2 / (1 * delta_r_list[0])
+            if Func_matrix[n][m] > 0:
+                A[0][0] = -2 * c1 - c3_oil - 2/(delta_r_list[0])**2/delta_fi_list[m]**2 + c1 - c2 / (1 * delta_r_list[0])
+            else:
+                A[0][0] = -2 * c1 - c3_water - 2/(delta_r_list[0])**2/delta_fi_list[m]**2 + c1 - c2 / (1 * delta_r_list[0])
         A[0][1] = c1 + c2 / (1 * delta_r_list[0])
 
         c1 = 1 / delta_r_list[N_r_full - 1] ** 2
@@ -133,32 +146,88 @@ def PorePressure_in_Time(N_r_full, M_fi_full, Pres_distrib, c3_oil, c3_water, CP
 
         c4 = 1 / delta_fi_list[m] ** 2
         A_sym = np.zeros((N_r_full, N_r_full))
-        for n in range(0,N_r_full):
-            A_sym[n][n] = c4/(sum(delta_r_list[0:n + 1]))**2
+        for n in range(0, N_r_full):
+            A_sym[n][n] = c4 / (sum(delta_r_list[0:n + 1])) ** 2
+
+        A_sym_right = A_sym.copy()
+        A_sym_left = A_sym.copy()
+
+        sign = 0
+        for coord_cell in bound_coord_cell:
+            if coord_cell[1] == m:
+                n = coord_cell[0]
+                if n == 0:
+                    raise TypeError
+                coef_1 = 1/delta_r_list[n]
+                coef_2 = perm/mu_oil
+                coef_3 = perm/mu_water
+                coef_4 = 1/delta_fi_list[m]/sum(delta_r_list[0:n+1])
+                A[n][n] = -(coef_1+coef_4)*(coef_2+coef_3)
+                A[n][n-1] = coef_2*coef_1
+                A[n][n+1] = coef_3*coef_1
+
+                A_sym_right[n][n] = coef_3 * coef_4
+                A_sym_left[n][n] = coef_2 * coef_4
+
+                sign = 1
 
         A_sym_coo = coo_matrix(A_sym)
+        A_sym_right_coo = coo_matrix(A_sym_right)
+        A_sym_left_coo = coo_matrix(A_sym_left)
+
         if m == 0:
-            A_line_1 = hstack([A, A_sym_coo, np.zeros((N_r_full, N_r_full * M_fi_full - 3 * N_r_full)), A_sym_coo])
-            A_full = coo_matrix(A_line_1)
-            print(type(A_full))
+            if sign == 1:
+                A_line_1 = hstack([A, A_sym_right_coo, np.zeros((N_r_full, N_r_full * M_fi_full - 3 * N_r_full)), A_sym_left_coo])
+                A_full = coo_matrix(A_line_1)
+            else:
+                A_line_1 = hstack([A, A_sym_coo, np.zeros((N_r_full, N_r_full * M_fi_full - 3 * N_r_full)), A_sym_coo])
+                A_full = coo_matrix(A_line_1)
         elif m == M_fi_full-1:
-            A_line_end = hstack([A_sym_coo, np.zeros((N_r_full, N_r_full * M_fi_full - 3 * N_r_full)), A_sym_coo, A])
-            A_full = vstack([A_full, A_line_end])
-            print(type(A_full))
+            if sign == 1:
+                A_line_end = hstack([A_sym_right_coo, np.zeros((N_r_full, N_r_full * M_fi_full - 3 * N_r_full)), A_sym_left_coo, A])
+                A_full = vstack([A_full, A_line_end])
+            else:
+                A_line_end = hstack(
+                    [A_sym_coo, np.zeros((N_r_full, N_r_full * M_fi_full - 3 * N_r_full)), A_sym_coo, A])
+                A_full = vstack([A_full, A_line_end])
         else:
-            A_line = hstack([np.zeros((N_r_full,N_r_full*(m-1))), A_sym_coo, A, A_sym_coo, np.zeros((N_r_full, N_r_full * M_fi_full - (3+(m-1)) * N_r_full))])
-            A_full = vstack([A_full, A_line])
+            if sign == 1:
+                A_line = hstack([np.zeros((N_r_full,N_r_full*(m-1))), A_sym_left_coo, A, A_sym_right_coo, np.zeros((N_r_full, N_r_full * M_fi_full - (3+(m-1)) * N_r_full))])
+                A_full = vstack([A_full, A_line])
+            else:
+                A_line = hstack([np.zeros((N_r_full, N_r_full * (m - 1))), A_sym_coo, A, A_sym_coo,
+                                 np.zeros((N_r_full, N_r_full * M_fi_full - (3 + (m - 1)) * N_r_full))])
+                A_full = vstack([A_full, A_line])
 
-
-
-
+    # A_full = A_full.toarray()
+    # for (n,m) in bound_coord_cell:
+    #     print(n,m)
+    #     if m != 0 and m != M_fi_full-1:
+    #         coef_4 = 1 / delta_fi_list[m] / sum(delta_r_list[0:n])
+    #         print(A_full[(m)*N_r_full + n][(m)*N_r_full + n])
+    #         print(A_full[(m)*N_r_full + n][(m)*N_r_full + n])
+    #         A_full[(m)*N_r_full + n][(m-1)*N_r_full + n] = coef_2*coef_4
+    #         A_full[(m)*N_r_full + n][(m+1)*N_r_full + n] = coef_3* coef_4
+    #         print(A_full[(m) * N_r_full + n][(m - 1) * N_r_full + n])
+    #         print(A_full[(m) * N_r_full + n][(m+1) * N_r_full + n])
+    #     elif m == 0:
+    #         coef_4 = 1 / delta_fi_list[m] / sum(delta_r_list[0:n])
+    #         A_full[(m) * N_r_full + n][(M_fi_full - 1) * N_r_full + n] = coef_2 * coef_4
+    #         A_full[(m) * N_r_full + n][(m + 1) * N_r_full + n] = coef_3 * coef_4
+    #     elif m == M_fi_full-1:
+    #         coef_4 = 1 / delta_fi_list[m] / sum(delta_r_list[0:n])
+    #         A_full[(m) * N_r_full + n][(m - 1) * N_r_full + n] = coef_2 * coef_4
+    #         A_full[(m) * N_r_full + n][n] = coef_3 * coef_4
+    #
+    # A_full = coo_matrix(A_full)
     j = 0
     for m in range(M_fi_full):
         for n in range(N_r_full):
-            if n == 0 and (m == frac_angle_cell or m == frac_angle_2_cell) :
-                c1 = 1 / delta_r_list[n] ** 2
-                c2 = 1 / 2 / delta_r_list[n]
-                B[j][0] = -c3_water * Pres_distrib[n][m] - (c1 - c2/(delta_r_list[n]))*P_center
+            # if n == 0 and (m == frac_angle_cell or m == frac_angle_2_cell) :
+            c1 = 1 / delta_r_list[n] ** 2
+            c2 = 1 / 2 / delta_r_list[n]
+            if Func_matrix[n][m] > 0:
+                B[j][0] = -c3_oil * Pres_distrib[n][m]
             else:
                 B[j][0] = -c3_water * Pres_distrib[n][m]
             j += 1
@@ -167,6 +236,23 @@ def PorePressure_in_Time(N_r_full, M_fi_full, Pres_distrib, c3_oil, c3_water, CP
     print(wells_frac_coords)
     wells_frac_coords_reverse = wells_frac_coords[:: -1]
     print(wells_frac_coords_reverse)
+    for coord_cell in bound_coord_cell:
+        #if coord_cell[1] != 0 and coord_cell[1] != M_fi_full-1:
+        B[coord_cell[1] * N_r_full + coord_cell[0]][0] = 0
+
+    A_full = A_full.toarray()
+    for (n,m) in bound_coord_cell:
+        print(n,m)
+        if m != 0 and m != M_fi_full-1:
+            print(A_full[(m)*N_r_full + n][(m)*N_r_full + n])
+            print(A_full[(m) * N_r_full + n][(m) * N_r_full + n-1])
+            print(A_full[(m) * N_r_full + n][(m) * N_r_full + n+1])
+            print(A_full[(m)*N_r_full + n][(m-1)*N_r_full + n])
+            print(A_full[(m)*N_r_full + n][(m+1)*N_r_full + n])
+            print(B[m*N_r_full + n][0])
+
+    A_full = coo_matrix(A_full)
+
     for coord_couple in wells_frac_coords_reverse:
         A_well_column_coo = A_full.getcol((coord_couple[1]-1)*N_r_full + coord_couple[0])
         A_well_column = A_well_column_coo.toarray()
@@ -239,7 +325,7 @@ if __name__ == '__main__':
     xig, yig = np.meshgrid(xi, yi)
     Pi = interpolate.griddata((X_list,Y_list), P_list, (xig, yig), method='cubic')
 
-    levels = list(range(0,2800000,10000))
+    levels = list(range(100000,1500000,10000))
     fig, ax = plt.subplots()
     surf = plt.contourf(xig, yig, Pi, cmap=cm.jet, antialiased=True, vmin=np.nanmin(Pi), vmax=np.nanmax(Pi),linewidth=0.2, levels=levels)
 

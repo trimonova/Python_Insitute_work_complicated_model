@@ -38,14 +38,22 @@ F = 1
 dt = 1
 it = 100
 
-for i in range(it):
-    dphi = np.gradient(phi)
-    dphi2 = [i**2 for i in dphi]
-    print(type(dphi))
-    dphi_norm = np.sqrt(np.sum(dphi2, axis=0))
+# for i in range(it):
+#     dphi = np.gradient(phi)
+#     dphi2 = [i**2 for i in dphi]
+#     print(type(dphi))
+#     dphi_norm = np.sqrt(np.sum(dphi2, axis=0))
+#
+#     phi = phi + dt * F * dphi_norm
+#
+#     # plot the zero level curve of phi
+#     plt.contour(phi, 0)
+#     plt.show()
 
-    phi = phi + dt * F * dphi_norm
-
-    # plot the zero level curve of phi
-    plt.contour(phi, 0)
-    plt.show()
+dict1 = {(1,4):1, (1,3):2, (2,3):2, (2,4):2}
+keys_list = list(dict1.keys())
+print(sorted(keys_list))
+def func(temp):
+    return temp[1], temp[0]
+keys_list.sort(key=func)
+print(keys_list)
