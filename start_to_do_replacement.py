@@ -26,10 +26,10 @@ from matplotlib import cm
 # M_fi_full = len(delta_fi_list)
 
 
-def replace_boundary(frac_angle_1, frac_angle_2, r_well, delta_fi_list, delta_r_list ):
+def replace_boundary(frac_angle_1, frac_angle_2, r_well, delta_fi_list, delta_r_list, frac_length ):
     frac_angle_list = [frac_angle_1, frac_angle_2]
-    rect_length = 0.05
-    rect_width = 0.02
+    rect_length = frac_length + 0.01
+    rect_width = 0.01
     Func_coord_dict = {}
     X_list = []
     Y_list = []

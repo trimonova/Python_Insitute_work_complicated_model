@@ -21,7 +21,7 @@ Cr = 5 * 10 ** (-10)  # сжимаемость скелета
 k_water = mu_water*fi*(Cf+Cr)/perm
 k_oil = mu_oil*fi*(Cf+Cr)/perm
 frac_angle = np.pi/6
-frac_angle_2 = np.pi/4*5
+frac_angle_2 = np.pi/6*7
 delta_r = 0.005
 delta_r_fine = 0.001
 R_for_fine = 0.015
@@ -74,7 +74,7 @@ for well_coord in wells_coord_real:
 wells_coord = list(zip( wells_dists, wells_angles))
 
 print(wells_coord)
-P_well = [500000, 500000, 200000]
+P_well = [1500000, 700000, 20000]
 
 CP_dict = {}  # словарь, в котором ключами являются координаты точек с давлениями, а значения - значения этих давлений
 
@@ -103,7 +103,7 @@ def sortByRad(inputSet):
 def sortByAngle(inputSet):
     return inputSet[1]
 
-bound_coord, Func_matrix, bound_coord_cell = replace_boundary(frac_angle, frac_angle_2, r_well, delta_fi_list, delta_r_list)
+bound_coord, Func_matrix, bound_coord_cell = replace_boundary(frac_angle, frac_angle_2, r_well, delta_fi_list, delta_r_list, sum(delta_r_list[0:len(frac_coord_1)]))
 
 def PorePressure_in_Time(N_r_full, M_fi_full, Pres_distrib, c3_oil, c3_water, CP_dict, P_center, wells_frac_coords):
 
@@ -325,18 +325,22 @@ if __name__ == '__main__':
     xig, yig = np.meshgrid(xi, yi)
     Pi = interpolate.griddata((X_list,Y_list), P_list, (xig, yig), method='cubic')
 
-    levels = list(range(100000,1500000,10000))
+    levels = list(range(0,1500000,10000))
     fig, ax = plt.subplots()
-    surf = plt.contourf(xig, yig, Pi, cmap=cm.jet, antialiased=True, vmin=np.nanmin(Pi), vmax=np.nanmax(Pi),linewidth=0.2, levels=levels)
+    surf = plt.contourf(xig, yig, Pi, linewidth=0.2, cmap=plt.get_cmap('jet'), levels=levels)
+
+    for coord_pair in bound_coord:
+        plt.scatter(coord_pair[0], coord_pair[1], marker='.')
+    plt.show()
 
     # patches = []
     # for i in range(len(delta_r_list)):
     #     circle = Wedge((0,0), r_well+sum(delta_r_list[0:i]), 0, 360, width=0.001)
     #     patches.append(circle)
-    for i in range(len(delta_fi_list)):
-        x, y = np.array([[0, (R-r_well)*np.cos(sum(delta_fi_list[0:i]))], [0, (R-r_well)*np.sin(sum(delta_fi_list[0:i]))]])
-        line = mlines.Line2D(x, y, lw=0.5)
-        ax.add_line(line)
+    # for i in range(len(delta_fi_list)):
+    #     x, y = np.array([[0, (R-r_well)*np.cos(sum(delta_fi_list[0:i]))], [0, (R-r_well)*np.sin(sum(delta_fi_list[0:i]))]])
+    #     line = mlines.Line2D(x, y, lw=0.5)
+    #     ax.add_line(line)
 #
 #
 #     #    t = np.arange(0, 2 * np.pi, 0.01)
