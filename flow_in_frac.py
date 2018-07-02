@@ -34,7 +34,7 @@ if __name__ == '__main__':
     #q = np.ones((N_fr-1, 1))*coef
     q = np.zeros((N_fr-1, 1))
 
-    T_exp = 3
+    T_exp = 10
     w = np.zeros((N_fr - 1, 1))
 
 def Pressure_in_frac(N_fr, t_step, N_well, alpha, w0, q, w, k, Sh):
@@ -50,27 +50,27 @@ def Pressure_in_frac(N_fr, t_step, N_well, alpha, w0, q, w, k, Sh):
         A[n][n-1] = -alpha/(delta_r_right/2 + delta_r_left/2)*w_left3
         A[n][n+1] = -alpha/(delta_r_right/2 + delta_r_left/2)*w_right3
 
-    w_right3 = ((w[0 + 1] + w[0]) / 2) ** 3
-    w_left3 = ((w[0] + w0) / 2) ** 3
+    w_right3_0 = ((w[0 + 1] + w[0]) / 2) ** 3
+    w_left3_0 = ((w[0] + w0) / 2) ** 3
     delta_r_right = delta_r_list[0 + 1]
     delta_r_left = delta_r_list[0]
-    A[0][0] = 1/t_step + alpha/(delta_r_right/2 + delta_r_left/2)*(w_right3/delta_r_right + w_left3/delta_r_left)
+    A[0][0] = 1/t_step + alpha/(delta_r_right/2 + delta_r_left/2)*(w_right3_0/delta_r_right + w_left3_0/delta_r_left)
     A[0][1] = -alpha/(delta_r_right/2 + delta_r_left/2)*w_right3
 
-    w_right3 = ((0 + w[N_fr-2]) / 2) ** 3
-    w_left3 = ((w[N_fr-2] + w[N_fr - 3]) / 2) ** 3
+    w_right3_end = ((0 + w[N_fr-2]) / 2) ** 3
+    w_left3_end = ((w[N_fr-2] + w[N_fr - 3]) / 2) ** 3
     delta_r_right = delta_r_list[N_fr-1]
     delta_r_left = delta_r_list[N_fr-2]
-    A[N_fr-2][N_fr-2] = 1/t_step + alpha/(delta_r_right/2 + delta_r_left/2)*(w_right3/delta_r_right + w_left3/delta_r_left)
-    A[N_fr-2][N_fr-3] = -alpha/(delta_r_right/2 + delta_r_left/2)*w_left3
+    A[N_fr-2][N_fr-2] = 1/t_step + alpha/(delta_r_right/2 + delta_r_left/2)*(w_right3_end/delta_r_right + w_left3_end/delta_r_left)
+    A[N_fr-2][N_fr-3] = -alpha/(delta_r_right/2 + delta_r_left/2)*w_left3_end
 
     for n in range(0, N_fr-1):
         B[n] = 1/t_step*w[n] - q[n]
 
-    w_left3 = ((w[0] + w0) / 2) ** 3
+    w_left3_another = ((w[0] + w0) / 2) ** 3
     delta_r_right = delta_r_list[0 + 1]
     delta_r_left = delta_r_list[0]
-    B[0] = B[0] - (-alpha/(delta_r_right/2 + delta_r_left/2)*w_left3)*w0
+    B[0] = B[0] - (-alpha/(delta_r_right/2 + delta_r_left/2)*w_left3_another)*w0
     # for n in range(0, N_fr-1):
     #     if n+1 == N_well:
     #         A[n][n + 1] = 0

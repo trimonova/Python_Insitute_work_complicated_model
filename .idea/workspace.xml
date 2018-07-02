@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="49f08c57-7f4d-4d07-97c0-2047aab7e0fa" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/piezo_5diag_n_wells_fineMesh_frac_sparseMatrix_newCentral_BC_add_replacement.py" afterPath="$PROJECT_DIR$/piezo_5diag_n_wells_fineMesh_frac_sparseMatrix_newCentral_BC_add_replacement.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/start_to_do_replacement.py" afterPath="$PROJECT_DIR$/start_to_do_replacement.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow_in_frac.py" afterPath="$PROJECT_DIR$/flow_in_frac.py" />
     </list>
     <ignored path="complicated_flow_model.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,7 +29,7 @@
       <file leaf-file-name="piezo_replacement_5diag_n_wells_fineMesh_frac.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/piezo_replacement_5diag_n_wells_fineMesh_frac.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3230">
+            <state relative-caret-position="0">
               <caret line="196" column="79" selection-start-line="196" selection-start-column="8" selection-end-line="196" selection-end-column="79" />
               <folding>
                 <element signature="e#198#216#0" expanded="true" />
@@ -86,31 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flow_in_frac.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="flow_in_frac.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flow_in_frac.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="flow_in_frac.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../untitled/flow_equations/flow_in_frac.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_pydev_execfile.py" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="34">
+              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -122,18 +101,6 @@
             <state relative-caret-position="816">
               <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="piezo_replacement_5diag_n_wells.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/piezo_replacement_5diag_n_wells.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-              <folding>
-                <element signature="e#198#216#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -163,6 +130,7 @@
         <option value="$PROJECT_DIR$/start_to_do_replacement.py" />
         <option value="$PROJECT_DIR$/piezo_5diag_n_wells_fineMesh_frac_sparseMatrix_newCentral_BC_add_replacement.py" />
         <option value="$PROJECT_DIR$/../untitled/flow_equations/flow_in_frac_with_Q_in_well.py" />
+        <option value="$PROJECT_DIR$/../untitled/research for paper/pressure_in_time_with_abaqus_data_st3_exp9_water_inj.py" />
         <option value="$PROJECT_DIR$/flow_in_frac.py" />
       </list>
     </option>
@@ -198,6 +166,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -218,12 +188,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../untitled/flow_equations/flow_in_frac.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../untitled" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
@@ -232,24 +200,7 @@
       <recent name="C:\Users\Мария\PycharmProjects\complicated_flow_model" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.flow_in_frac">
-    <configuration default="false" name="start_to_do_replacement" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="complicated_flow_model" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/start_to_do_replacement.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.flow_in_frac (1)">
     <configuration default="false" name="piezo_5diag_n_wells_fineMesh_frac_sparseMatrix_newCentral_BC_add_replacement" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -314,6 +265,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="complicated_flow_model" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flow_in_frac.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="pressure_in_time_with_abaqus_data_st3_exp9_water_inj" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../untitled/research for paper" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="complicated_flow_model" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../untitled/research for paper/pressure_in_time_with_abaqus_data_st3_exp9_water_inj.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -453,19 +421,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.start_to_do_replacement" />
-      <item index="1" class="java.lang.String" itemvalue="Python.piezo_5diag_n_wells_fineMesh_frac_sparseMatrix_newCentral_BC_add_replacement" />
-      <item index="2" class="java.lang.String" itemvalue="Python.flow_in_frac" />
-      <item index="3" class="java.lang.String" itemvalue="Python.flow_in_frac_with_Q_in_well" />
-      <item index="4" class="java.lang.String" itemvalue="Python.flow_in_frac (1)" />
+      <item index="0" class="java.lang.String" itemvalue="Python.piezo_5diag_n_wells_fineMesh_frac_sparseMatrix_newCentral_BC_add_replacement" />
+      <item index="1" class="java.lang.String" itemvalue="Python.flow_in_frac" />
+      <item index="2" class="java.lang.String" itemvalue="Python.flow_in_frac_with_Q_in_well" />
+      <item index="3" class="java.lang.String" itemvalue="Python.flow_in_frac (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Python.pressure_in_time_with_abaqus_data_st3_exp9_water_inj" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.flow_in_frac" />
-        <item index="1" class="java.lang.String" itemvalue="Python.flow_in_frac (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.flow_in_frac_with_Q_in_well" />
-        <item index="3" class="java.lang.String" itemvalue="Python.piezo_5diag_n_wells_fineMesh_frac_sparseMatrix_newCentral_BC_add_replacement" />
-        <item index="4" class="java.lang.String" itemvalue="Python.start_to_do_replacement" />
+        <item index="0" class="java.lang.String" itemvalue="Python.flow_in_frac (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.pressure_in_time_with_abaqus_data_st3_exp9_water_inj" />
+        <item index="2" class="java.lang.String" itemvalue="Python.flow_in_frac" />
+        <item index="3" class="java.lang.String" itemvalue="Python.flow_in_frac_with_Q_in_well" />
+        <item index="4" class="java.lang.String" itemvalue="Python.piezo_5diag_n_wells_fineMesh_frac_sparseMatrix_newCentral_BC_add_replacement" />
       </list>
     </recent_temporary>
   </component>
@@ -487,14 +455,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23511904" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3991276" sideWeight="0.52619046" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33478734" sideWeight="0.56904763" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33478734" sideWeight="0.44047618" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33478734" sideWeight="0.43095237" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -537,11 +505,6 @@
           <line>85</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/../untitled/flow_equations/flow_in_frac.py</url>
-          <line>59</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -555,16 +518,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/piezo_replacement_5diag_n_wells_fineMesh_frac.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1717">
-          <caret line="101" column="33" selection-start-line="101" selection-start-column="33" selection-end-line="101" selection-end-column="33" />
-          <folding>
-            <element signature="e#198#216#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/piezo_replacement_5diag_n_wells_fineMesh_frac_sparseMatrix.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
@@ -587,9 +540,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
           <caret line="72" column="220" selection-start-line="72" selection-start-column="111" selection-end-line="72" selection-end-column="220" />
-          <folding>
-            <element signature="e#298#316#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -597,9 +547,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="e#198#216#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -647,9 +594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
           <caret line="72" column="220" selection-start-line="72" selection-start-column="111" selection-end-line="72" selection-end-column="220" />
-          <folding>
-            <element signature="e#298#316#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -657,9 +601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="e#198#216#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -697,9 +638,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
           <caret line="72" column="220" selection-start-line="72" selection-start-column="111" selection-end-line="72" selection-end-column="220" />
-          <folding>
-            <element signature="e#298#316#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -707,9 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="e#198#216#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -747,9 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-          <folding>
-            <element signature="e#298#316#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -757,9 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="e#198#216#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -797,9 +726,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-          <folding>
-            <element signature="e#298#316#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -807,9 +733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="e#198#216#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -837,9 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="e#198#216#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -867,9 +787,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="e#198#216#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -897,9 +814,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#198#216#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -947,9 +861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6426">
           <caret line="381" column="137" selection-start-line="364" selection-start-column="3" selection-end-line="381" selection-end-column="137" />
-          <folding>
-            <element signature="e#298#316#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -957,9 +868,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding>
-            <element signature="e#198#216#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -975,7 +883,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/piezo_replacement_5diag_n_wells_fineMesh_frac.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3230">
+        <state relative-caret-position="0">
           <caret line="196" column="79" selection-start-line="196" selection-start-column="8" selection-end-line="196" selection-end-column="79" />
           <folding>
             <element signature="e#198#216#0" expanded="true" />
@@ -1001,18 +909,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled/flow_equations/flow_in_frac_with_Q_in_well.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35-32/Lib/site-packages/numpy/linalg/linalg.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="355" column="0" selection-start-line="355" selection-start-column="0" selection-end-line="355" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled/research for paper/pressure_in_time_with_abaqus_data_st3_exp9_water_inj.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled/flow_equations/flow_in_frac.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1028,26 +953,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+    <entry file="file://$PROJECT_DIR$/../untitled/flow_equations/flow_in_frac_with_Q_in_well.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="816">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flow_in_frac.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled/flow_equations/flow_in_frac.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state relative-caret-position="34">
+          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
           <folding />
         </state>
       </provider>
